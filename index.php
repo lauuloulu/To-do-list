@@ -12,6 +12,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+<style> 
+    .subrayado{
+        text-decoration: line-through;
+    }
+</style>
+
 </head>
 
 <body>
@@ -55,11 +61,11 @@
               type="checkbox" 
               value="" 
               id="" 
-              checked> 
-              &nbsp; &nbsp; <span class="float-start"> &nbsp; <?php echo $registro['tarea'];?></span>
+              <?php echo ($registro['completada']==1)?'checked':''; ?>> 
+              &nbsp; &nbsp; <span class="float-start <?php echo ($registro['completada']==1)?'subrayado':''; ?> "> &nbsp; <?php echo $registro['tarea'];?></span>
               
             <h6 class="float-start">
-               &nbsp; <span class="badge bg-danger">x</span>
+               &nbsp; <a href="?id=<?php echo $registro['id'];?>"><span class="badge bg-danger"> x </span>
             </h6>
     </li>
 

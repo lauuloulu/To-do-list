@@ -17,6 +17,15 @@ if(isset($_POST['agregar-tarea'])){
         echo "Error al insertar la tarea: " . $errorInfo[2];
     }
 }
+if(isset($_GET['id'])){
+
+    $id=$_GET['id'];
+    $sql="DELETE FROM tareas WHERE id=?";
+    $sentencia=$conn->prepare($sql);
+    $sentencia->execute([$id]);
+
+}
+
 
 $sql="SELECT * FROM tareas";
 $registros=$conn->query($sql);

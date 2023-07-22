@@ -16,6 +16,11 @@
     .subrayado{
         text-decoration: line-through;
     }
+
+    a{
+      color:black;
+      text-decoration: none;
+    }
 </style>
 
 </head>
@@ -57,12 +62,23 @@
 <?php foreach($registros as $registro){?>
     
     <li class="list-group-item"> 
-      <input class="form-check-input float-start" 
+
+    <form action="" method="post">
+    <input type="hidden" name="id" value="<?php echo $registro['id'];?>">
+    <input 
+              class="form-check-input float-start" 
               type="checkbox" 
-              value="" 
+              name="completada"
+              value="<?php echo $registro['completada'];?>" 
               id="" 
+              onChange="this.form.submit()"
               <?php echo ($registro['completada']==1)?'checked':''; ?>> 
-              &nbsp; &nbsp; <span class="float-start <?php echo ($registro['completada']==1)?'subrayado':''; ?> "> &nbsp; <?php echo $registro['tarea'];?></span>
+    </form>
+              
+              &nbsp; &nbsp; 
+            <span class="float-start <?php echo ($registro['completada']==1)?'subrayado':''; ?> "> 
+              &nbsp; <?php echo $registro['tarea'];?>
+            </span>
               
             <h6 class="float-start">
                &nbsp; <a href="?id=<?php echo $registro['id'];?>"><span class="badge bg-danger"> x </span>

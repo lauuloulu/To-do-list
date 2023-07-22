@@ -6,6 +6,16 @@ $conn= new PDO('mysql:host=localhost;dbname=apptodo','root','');
     echo "Error de coexión: ";
 }
 
+if(isset($_POST['id'])){
+$id=$_POST['id'];
+$completada= (isset($_POST['completada']))?1:0;
+
+$sql="UPDATE tareas SET completada=? WHERE id=?";
+$sentencia=$conn->prepare($sql);
+$sentencia->execute([$completada,$id]);
+
+}
+
 if(isset($_POST['agregar-tarea'])){
 
     $tarea=($_POST['tarea']);
